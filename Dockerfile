@@ -12,4 +12,4 @@ RUN wget -P ~ https://gist.githubusercontent.com/MasahiroSaito/0d09b7625d2d75a1e
 
 RUN chsh -s /bin/zsh
 
-CMD zsh
+ENTRYPOINT ["zsh"]
