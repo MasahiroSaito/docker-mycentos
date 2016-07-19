@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER MasahiroSaito
+MAINTAINER MasahiroSaito (m411momo)
 
 RUN \
 yum update -y && \
