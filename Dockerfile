@@ -9,8 +9,7 @@ yum install -y vim && \
 yum install -y net-tools && \
 yum install -y git
 
-RUN wget -P ~ https://gist.githubusercontent.com/MasahiroSaito/0d09b7625d2d75a1e56682ade6b5a4b2/raw/b103012d5cac4c37f9ce5679b937d0ff42055025/.zshrc
-
+RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc
 RUN chsh -s /bin/zsh
 
 ENTRYPOINT ["zsh"]
