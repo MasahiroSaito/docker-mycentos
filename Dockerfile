@@ -20,18 +20,18 @@ sqlite-devel \
 openssl \
 openssl-devel
 
-RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc
-RUN chsh -s /bin/zsh
+# RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc
+# RUN chsh -s /bin/zsh
 
 RUN git clone https://github.com/yyuu/pyenv.git ~/.pyenv && \
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc && \
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc && \
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc && \
-zsh -c "source ~/.zshrc"
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile && \
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile && \
+echo 'eval "$(pyenv init -)"' >> ~/.bash_profile && \
+source ~/.bash_profile
 
 RUN \
-zsh -c "pyenv install 3.4.3" && \
-zsh -c "pyenv global 3.4.3" && \
-zsh -c "pyenv rehash"
+pyenv install 3.4.3 && \
+pyenv global 3.4.3 && \
+pyenv rehash
 
-ENTRYPOINT ["zsh"]
+ENTRYPOINT ["bash"]
