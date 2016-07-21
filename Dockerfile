@@ -1,8 +1,7 @@
 FROM centos:7
 MAINTAINER MasahiroSaito (m411momo)
 
-RUN yum update -y
-RUN yum install -y \
+RUN yum update -y && yum install -y \
 wget \
 zsh \
 vim \
@@ -19,17 +18,22 @@ sqlite-devel \
 openssl \
 openssl-devel
 
-RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc
-RUN chsh -s /bin/zsh
+RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc && chsh -s /bin/zsh
 
-RUN git clone https://github.com/yyuu/pyenv.git ~/.pyenv
-RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-RUN echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-RUN echo 'eval "$(pyenv init -)"' >> ~/.zshrc
-RUN ["/bin/zsh", "-c", "source ~/.zshrc"]
+RUN \
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv && \
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc && \
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc && \
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc && \
+/bin/zsh -c "source ~/.zshrc && \
+~/.pyenv/bin/pyenv install 3.4.3 && \
+~/.pyenv/bin/pyenv global 3.4.3 && \
+~/.pyenv/bin/pyenv rehash"
 
-RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv install 3.4.3"]
-RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv global 3.4.3"]
-RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv rehash"]
+# RUN ["/bin/zsh", "-c", "source ~/.zshrc"]
+
+# RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv install 3.4.3"]
+# RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv global 3.4.3"]
+# RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv rehash"]
 
 ENTRYPOINT ["zsh"]
