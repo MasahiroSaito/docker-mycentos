@@ -30,10 +30,4 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc && \
 ~/.pyenv/bin/pyenv global 3.4.3 && \
 ~/.pyenv/bin/pyenv rehash"
 
-# RUN ["/bin/zsh", "-c", "source ~/.zshrc"]
-
-# RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv install 3.4.3"]
-# RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv global 3.4.3"]
-# RUN ["/bin/zsh", "-c", "~/.pyenv/bin/pyenv rehash"]
-
 ENTRYPOINT ["zsh"]
