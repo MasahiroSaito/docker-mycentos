@@ -29,9 +29,10 @@ echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile && \
 echo 'eval "$(pyenv init -)"' >> ~/.bash_profile && \
 source ~/.bash_profile
 
-RUN \
-pyenv install 3.4.3 && \
-pyenv global 3.4.3 && \
-pyenv rehash
+RUN [
+"pyenv install 3.4.3",
+"pyenv global 3.4.3",
+"pyenv rehash"
+]
 
 ENTRYPOINT ["bash"]
