@@ -22,6 +22,7 @@ openssl-devel
 
 RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc
 RUN chsh -s /bin/zsh
+RUN zsh
 
 RUN git clone https://github.com/yyuu/pyenv.git ~/.pyenv && \
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc && \
