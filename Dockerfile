@@ -1,8 +1,9 @@
 FROM centos:7
 MAINTAINER MasahiroSaito (m411momo)
 
-RUN yum update -y
+SHELL ["/bin/bash", "-c"]
 
+RUN yum update -y
 RUN yum install -y \
 wget \
 zsh \
@@ -24,13 +25,13 @@ openssl-devel
 # RUN chsh -s /bin/zsh
 
 RUN git clone https://github.com/yyuu/pyenv.git ~/.pyenv && \
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile && \
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile && \
-echo 'eval "$(pyenv init -)"' >> ~/.bash_profile && \
-source ~/.bash_profile
+RUN echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bash_profile && \
+RUN echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bash_profile && \
+RUN echo 'eval "$(pyenv init -)"' >> ~/.bash_profile && \
+RUN source ~/.bash_profile
 
-RUN [ "/bin/bash", "-c", "pyenv install 3.4.3" ]
-RUN [ "pyenv global 3.4.3" ]
-RUN [ "pyenv rehash" ]
+RUN pyenv install 3.4.3
+RUN pyenv global 3.4.3
+RUN pyenv rehash
 
-ENTRYPOINT ["bash"]
+# ENTRYPOINT ["bash"]
