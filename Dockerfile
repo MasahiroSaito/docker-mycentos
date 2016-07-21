@@ -22,17 +22,16 @@ openssl-devel
 
 RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc
 RUN chsh -s /bin/zsh
-RUN zsh
 
 RUN git clone https://github.com/yyuu/pyenv.git ~/.pyenv && \
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc && \
 echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc && \
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc && \
-source ~/.zshrc
+zsh -c "source ~/.zshrc"
 
 RUN \
-pyenv install 3.4.3 && \
-pyenv global 3.4.3 && \
-pyenv rehash
+zsh -c "pyenv install 3.4.3" && \
+zsh -c "pyenv global 3.4.3" && \
+zsh -c "pyenv rehash"
 
 ENTRYPOINT ["zsh"]
