@@ -15,7 +15,7 @@ yum install -y bzip2-devel &&\
 yum install -y readline-devel &&\
 yum install -y sqlite-devel &&\
 yum install -y openssl &&\
-yum install -y openssl-devel &&\
+yum install -y openssl-devel
 
 RUN wget -P ~ https://raw.githubusercontent.com/MasahiroSaito/docker-mycentos/master/.zshrc
 RUN chsh -s /bin/zsh
