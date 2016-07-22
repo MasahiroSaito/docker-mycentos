@@ -30,6 +30,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc && \
 ~/.pyenv/bin/pyenv install 3.4.3 && \
 ~/.pyenv/bin/pyenv global 3.4.3 && \
 ~/.pyenv/bin/pyenv rehash && \
-pip install --upgrade pip"
+pip install --upgrade pip && \
+pip install slackbot"
 
 ENTRYPOINT ["zsh"]
