@@ -8,6 +8,7 @@ vim \
 net-tools \
 git \
 gcc \
+zlib \
 zlib-devel \
 bzip2 \
 bzip2-devel \
