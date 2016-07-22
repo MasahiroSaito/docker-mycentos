@@ -29,6 +29,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc && \
 /bin/zsh -c "source ~/.zshrc && \
 ~/.pyenv/bin/pyenv install 3.4.3 && \
 ~/.pyenv/bin/pyenv global 3.4.3 && \
-~/.pyenv/bin/pyenv rehash"
+~/.pyenv/bin/pyenv rehash && \
+pip install --upgrade pip"
 
 ENTRYPOINT ["zsh"]
